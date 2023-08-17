@@ -1,0 +1,1824 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'></meta>
+    <link rel='stylesheet' type='text/css' href='statprofiler.css'></link>
+    <title>StatProfilerHTML - ../../../../.julia/packages/Interpolations/y4lLj/src/gridded/indexing.jl</title>
+  </head>
+  <body>
+    <div class='report-header'>
+      <div class='backlink'>
+        <a href='index.html'>Report index</a>
+      </div>
+      <div class='report-title'>
+        StatProfilerHTML.jl report
+      </div>
+      <div class='generated-on'>
+        Generated on Wed, 16 Aug 2023 20:46:00
+      </div>
+    </div>
+    <table>
+      <caption>File source code</caption>
+      <thead>
+        <tr>
+          <th>Line</th>
+          <th>Exclusive</th>
+          <th>Inclusive</th>
+          <th>Code</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id='L1'>
+          <td class='lineno'>1</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'># Indexing at a point</span>
+          </td>
+        </tr>
+        <tr id='L2'>
+          <td class='lineno'>2</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>@inline function &#40;itp::GriddedInterpolation&#123;T,N&#125;&#41;&#40;x::Vararg&#123;Number,N&#125;&#41; where &#123;T,N&#125;</span>
+          </td>
+        </tr>
+        <tr id='L3'>
+          <td class='lineno'>3</td>
+          <td class='tracecount excl'>28 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'>28 &#40;0 &#37;&#41;</td>
+          <td>
+            <div class='call-sites'>
+              28 &#40;0 &#37;&#41;
+              samples spent in GriddedInterpolation
+              <br />
+              28 &#40;100 &#37;&#41; &#40;ex.&#41;,
+              28 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from _broadcast_getindex_evalf
+              <a href='broadcast.jl-e71e7d54c75e752fab083348880d041af9fd37e2.html#L683'>line 683</a>
+              <br />
+            </div>
+            
+            <span class='code'>    @boundscheck &#40;checkbounds&#40;Bool, itp, x...&#41; || Base.throw_boundserror&#40;itp, x&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L4'>
+          <td class='lineno'>4</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'>1413 &#40;2 &#37;&#41;</td>
+          <td>
+            <div class='call-sites'>
+              1413 &#40;2 &#37;&#41;
+              samples spent in GriddedInterpolation
+              <br />
+              
+              184 &#40;13 &#37;&#41; &#40;incl.&#41;
+              when called from FilledExtrapolation
+              <a href='filled.jl-eb57ac6688a7fffbd68210541ad4999445d1ae74.html#L35'>line 35</a>
+              <br />
+              
+              1229 &#40;87 &#37;&#41; &#40;incl.&#41;
+              when called from _broadcast_getindex_evalf
+              <a href='broadcast.jl-e71e7d54c75e752fab083348880d041af9fd37e2.html#L683'>line 683</a>
+              <br />
+            </div>
+            <div class='callees'>
+              1413 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='indexing.jl-88231a26dfc974146659dd763daf6fc08121f304.html#L66'>weightedindexes</a>
+              <br />
+            </div>
+            <span class='code'>    wis &#61; weightedindexes&#40;&#40;value_weights,&#41;, itpinfo&#40;itp&#41;..., x&#41;</span>
+          </td>
+        </tr>
+        <tr id='L5'>
+          <td class='lineno'>5</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'>227 &#40;0 &#37;&#41;</td>
+          <td>
+            <div class='call-sites'>
+              227 &#40;0 &#37;&#41;
+              samples spent in GriddedInterpolation
+              <br />
+              
+              168 &#40;74 &#37;&#41; &#40;incl.&#41;
+              when called from FilledExtrapolation
+              <a href='filled.jl-eb57ac6688a7fffbd68210541ad4999445d1ae74.html#L35'>line 35</a>
+              <br />
+              
+              59 &#40;26 &#37;&#41; &#40;incl.&#41;
+              when called from _broadcast_getindex_evalf
+              <a href='broadcast.jl-e71e7d54c75e752fab083348880d041af9fd37e2.html#L683'>line 683</a>
+              <br />
+            </div>
+            <div class='callees'>
+              227 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='abstractarray.jl-4288795e38b9e09cede80b2cc3fe3c00fc0ffd74.html#L1294'>getindex</a>
+              <br />
+            </div>
+            <span class='code'>    coefficients&#40;itp&#41;&#91;wis...&#93;</span>
+          </td>
+        </tr>
+        <tr id='L6'>
+          <td class='lineno'>6</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+        <tr id='L7'>
+          <td class='lineno'>7</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>@propagate_inbounds function &#40;itp::GriddedInterpolation&#123;T,N&#125;&#41;&#40;x::Vararg&#123;Number,M&#125;&#41; where &#123;T,M,N&#125;</span>
+          </td>
+        </tr>
+        <tr id='L8'>
+          <td class='lineno'>8</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    inds, trailing &#61; split_trailing&#40;itp, x&#41;</span>
+          </td>
+        </tr>
+        <tr id='L9'>
+          <td class='lineno'>9</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    @boundscheck &#40;check1&#40;trailing&#41; || Base.throw_boundserror&#40;itp, x&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L10'>
+          <td class='lineno'>10</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    @assert length&#40;inds&#41; &#61;&#61; N</span>
+          </td>
+        </tr>
+        <tr id='L11'>
+          <td class='lineno'>11</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    itp&#40;inds...&#41;</span>
+          </td>
+        </tr>
+        <tr id='L12'>
+          <td class='lineno'>12</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+        <tr id='L13'>
+          <td class='lineno'>13</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>@inline function &#40;itp::GriddedInterpolation&#41;&#40;x::Vararg&#123;UnexpandedIndexTypes&#125;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L14'>
+          <td class='lineno'>14</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    xis &#61; to_indices&#40;itp, x&#41;</span>
+          </td>
+        </tr>
+        <tr id='L15'>
+          <td class='lineno'>15</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    xis &#61;&#61; x &amp;&amp; error&#40;&quot;evaluation not supported for GriddedInterpolation at positions &#36;x&quot;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L16'>
+          <td class='lineno'>16</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    itp&#40;xis...&#41;</span>
+          </td>
+        </tr>
+        <tr id='L17'>
+          <td class='lineno'>17</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+        <tr id='L18'>
+          <td class='lineno'>18</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L19'>
+          <td class='lineno'>19</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>@inline function gradient&#40;itp::GriddedInterpolation&#123;T,N&#125;, x::Vararg&#123;Number,N&#125;&#41; where &#123;T,N&#125;</span>
+          </td>
+        </tr>
+        <tr id='L20'>
+          <td class='lineno'>20</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    @boundscheck &#40;checkbounds&#40;Bool, itp, x...&#41; || Base.throw_boundserror&#40;itp, x&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L21'>
+          <td class='lineno'>21</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    wis &#61; weightedindexes&#40;&#40;value_weights, gradient_weights&#41;, itpinfo&#40;itp&#41;..., x&#41;</span>
+          </td>
+        </tr>
+        <tr id='L22'>
+          <td class='lineno'>22</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    SVector&#40;map&#40;inds-&gt;coefficients&#40;itp&#41;&#91;inds...&#93;, wis&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L23'>
+          <td class='lineno'>23</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+        <tr id='L24'>
+          <td class='lineno'>24</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L25'>
+          <td class='lineno'>25</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>itpinfo&#40;itp::GriddedInterpolation&#41; &#61; &#40;tcollect&#40;itpflag, itp&#41;, itp.knots&#41;</span>
+          </td>
+        </tr>
+        <tr id='L26'>
+          <td class='lineno'>26</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L27'>
+          <td class='lineno'>27</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>roundbounds&#40;x::Integer, knotvec::AbstractVector&#41; &#61; gridded_roundbounds&#40;x, knotvec&#41;</span>
+          </td>
+        </tr>
+        <tr id='L28'>
+          <td class='lineno'>28</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>roundbounds&#40;x::Number, knotvec::AbstractVector&#41; &#61; gridded_roundbounds&#40;x, knotvec&#41;</span>
+          </td>
+        </tr>
+        <tr id='L29'>
+          <td class='lineno'>29</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>function gridded_roundbounds&#40;x, knotvec::AbstractVector&#41;</span>
+          </td>
+        </tr>
+        <tr id='L30'>
+          <td class='lineno'>30</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    i &#61; find_knot_index&#40;knotvec, x&#41;</span>
+          </td>
+        </tr>
+        <tr id='L31'>
+          <td class='lineno'>31</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    iclamp &#61; max&#40;i, first&#40;axes1&#40;knotvec&#41;&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L32'>
+          <td class='lineno'>32</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    inext &#61; min&#40;iclamp&#43;1, last&#40;axes1&#40;knotvec&#41;&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L33'>
+          <td class='lineno'>33</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    ifelse&#40;i &lt; iclamp, i&#43;1, ifelse&#40;x - knotvec&#91;iclamp&#93; &lt; knotvec&#91;inext&#93; - x, i, inext&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L34'>
+          <td class='lineno'>34</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+        <tr id='L35'>
+          <td class='lineno'>35</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L36'>
+          <td class='lineno'>36</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>floorbounds&#40;x::Integer, knotvec::AbstractVector&#41; &#61; gridded_floorbounds&#40;x, knotvec&#41;</span>
+          </td>
+        </tr>
+        <tr id='L37'>
+          <td class='lineno'>37</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>floorbounds&#40;x, knotvec::AbstractVector&#41; &#61; gridded_floorbounds&#40;x, knotvec&#41;</span>
+          </td>
+        </tr>
+        <tr id='L38'>
+          <td class='lineno'>38</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>function gridded_floorbounds&#40;x, knotvec::AbstractVector&#41;</span>
+          </td>
+        </tr>
+        <tr id='L39'>
+          <td class='lineno'>39</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    i &#61; find_knot_index&#40;knotvec, x&#41;</span>
+          </td>
+        </tr>
+        <tr id='L40'>
+          <td class='lineno'>40</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    max&#40;i, first&#40;axes1&#40;knotvec&#41;&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L41'>
+          <td class='lineno'>41</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+        <tr id='L42'>
+          <td class='lineno'>42</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L43'>
+          <td class='lineno'>43</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>ceilbounds&#40;x::Integer, knotvec::AbstractVector&#41; &#61; gridded_ceilbounds&#40;x, knotvec&#41;</span>
+          </td>
+        </tr>
+        <tr id='L44'>
+          <td class='lineno'>44</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>ceilbounds&#40;x, knotvec::AbstractVector&#41; &#61; gridded_ceilbounds&#40;x, knotvec&#41;</span>
+          </td>
+        </tr>
+        <tr id='L45'>
+          <td class='lineno'>45</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>function gridded_ceilbounds&#40;x, knotvec::AbstractVector&#41;</span>
+          </td>
+        </tr>
+        <tr id='L46'>
+          <td class='lineno'>46</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    i &#61; find_knot_index&#40;knotvec, x&#41;</span>
+          </td>
+        </tr>
+        <tr id='L47'>
+          <td class='lineno'>47</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    iclamp &#61; max&#40;i, first&#40;axes1&#40;knotvec&#41;&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L48'>
+          <td class='lineno'>48</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    min&#40;iclamp&#43;1, last&#40;axes1&#40;knotvec&#41;&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L49'>
+          <td class='lineno'>49</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+        <tr id='L50'>
+          <td class='lineno'>50</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L51'>
+          <td class='lineno'>51</td>
+          <td class='tracecount excl'>11 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'>876 &#40;1 &#37;&#41;</td>
+          <td>
+            <div class='call-sites'>
+              876 &#40;1 &#37;&#41;
+              samples spent in find_knot_index
+              <br />
+              11 &#40;1 &#37;&#41; &#40;ex.&#41;,
+              876 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from weightedindex_parts
+              <a href='indexing.jl-e4ccd64e295c249c5bb83223a79dcd8ed3821767.html#L55'>line 55</a>
+              <br />
+            </div>
+            <div class='callees'>
+              10 &#40;1 &#37;&#41;
+              samples spent calling
+              <a href='int.jl-2a5dde5347b8e348120de5e397ef7d3e14bfa1fb.html#L233'>searchsortedfirst</a>
+              <br />
+              114 &#40;13 &#37;&#41;
+              samples spent calling
+              <a href='sort.jl-e915996db18c3ef650f56281b2a9b25c04b567ef.html#L284'>searchsortedfirst</a>
+              <br />
+              733 &#40;85 &#37;&#41;
+              samples spent calling
+              <a href='sort.jl-e915996db18c3ef650f56281b2a9b25c04b567ef.html#L233'>searchsortedfirst</a>
+              <br />
+              8 &#40;1 &#37;&#41;
+              samples spent calling
+              <a href='int.jl-2a5dde5347b8e348120de5e397ef7d3e14bfa1fb.html#L86'>-</a>
+              <br />
+            </div>
+            <span class='code'>@inline find_knot_index&#40;knotv, x&#41; &#61; searchsortedfirst&#40;knotv, x, Base.Order.ForwardOrdering&#40;&#41;&#41; - 1</span>
+          </td>
+        </tr>
+        <tr id='L52'>
+          <td class='lineno'>52</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>@inline find_knot_index&#40;knotv, x::AbstractVector&#41; &#61; searchsortedfirst_vec&#40;knotv, x&#41; .- 1</span>
+          </td>
+        </tr>
+        <tr id='L53'>
+          <td class='lineno'>53</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L54'>
+          <td class='lineno'>54</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>@inline function weightedindex_parts&#40;fs::F, mode::Gridded, knotvec::AbstractVector, x&#41; where F</span>
+          </td>
+        </tr>
+        <tr id='L55'>
+          <td class='lineno'>55</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'>890 &#40;1 &#37;&#41;</td>
+          <td>
+            <div class='call-sites'>
+              890 &#40;1 &#37;&#41;
+              samples spent in weightedindex_parts
+              <br />
+              
+              890 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from map3argf
+              <a href='indexing.jl-88231a26dfc974146659dd763daf6fc08121f304.html#L70'>line 70</a>
+              <br />
+            </div>
+            <div class='callees'>
+              14 &#40;2 &#37;&#41;
+              samples spent calling
+              <a href='sort.jl-e915996db18c3ef650f56281b2a9b25c04b567ef.html#L0'>find_knot_index</a>
+              <br />
+              876 &#40;98 &#37;&#41;
+              samples spent calling
+              <a href='indexing.jl-e4ccd64e295c249c5bb83223a79dcd8ed3821767.html#L51'>find_knot_index</a>
+              <br />
+            </div>
+            <span class='code'>    i &#61; find_knot_index&#40;knotvec, x&#41;</span>
+          </td>
+        </tr>
+        <tr id='L56'>
+          <td class='lineno'>56</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'>523 &#40;1 &#37;&#41;</td>
+          <td>
+            <div class='call-sites'>
+              523 &#40;1 &#37;&#41;
+              samples spent in weightedindex_parts
+              <br />
+              
+              523 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from map3argf
+              <a href='indexing.jl-88231a26dfc974146659dd763daf6fc08121f304.html#L70'>line 70</a>
+              <br />
+            </div>
+            <div class='callees'>
+              498 &#40;95 &#37;&#41;
+              samples spent calling
+              <a href='indexing.jl-e4ccd64e295c249c5bb83223a79dcd8ed3821767.html#L62'>weightedindex_parts2</a>
+              <br />
+              25 &#40;5 &#37;&#41;
+              samples spent calling
+              <a href='indexing.jl-e4ccd64e295c249c5bb83223a79dcd8ed3821767.html#L61'>weightedindex_parts2</a>
+              <br />
+            </div>
+            <span class='code'>    weightedindex_parts2&#40;fs, mode, knotvec, x, i&#41;</span>
+          </td>
+        </tr>
+        <tr id='L57'>
+          <td class='lineno'>57</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+        <tr id='L58'>
+          <td class='lineno'>58</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L59'>
+          <td class='lineno'>59</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>@inline function weightedindex_parts2&#40;fs::F, mode::Gridded, knotvec::AbstractVector, x, i&#41; where F</span>
+          </td>
+        </tr>
+        <tr id='L60'>
+          <td class='lineno'>60</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    ax1 &#61; axes1&#40;knotvec&#41;</span>
+          </td>
+        </tr>
+        <tr id='L61'>
+          <td class='lineno'>61</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'>25 &#40;0 &#37;&#41;</td>
+          <td>
+            <div class='call-sites'>
+              25 &#40;0 &#37;&#41;
+              samples spent in weightedindex_parts2
+              <br />
+              
+              25 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from weightedindex_parts
+              <a href='indexing.jl-e4ccd64e295c249c5bb83223a79dcd8ed3821767.html#L56'>line 56</a>
+              <br />
+            </div>
+            <div class='callees'>
+              25 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='math.jl-03e70bedf95015cbad504b0777582b1b6562ce77.html#L89'>clamp</a>
+              <br />
+            </div>
+            <span class='code'>    iclamp &#61; clamp&#40;i, first&#40;ax1&#41;, last&#40;ax1&#41;-1&#41;</span>
+          </td>
+        </tr>
+        <tr id='L62'>
+          <td class='lineno'>62</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'>498 &#40;1 &#37;&#41;</td>
+          <td>
+            <div class='call-sites'>
+              498 &#40;1 &#37;&#41;
+              samples spent in weightedindex_parts2
+              <br />
+              
+              498 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from weightedindex_parts
+              <a href='indexing.jl-e4ccd64e295c249c5bb83223a79dcd8ed3821767.html#L56'>line 56</a>
+              <br />
+            </div>
+            <div class='callees'>
+              320 &#40;64 &#37;&#41;
+              samples spent calling
+              <a href='indexing.jl-e4ccd64e295c249c5bb83223a79dcd8ed3821767.html#L70'>weightedindex</a>
+              <br />
+              161 &#40;32 &#37;&#41;
+              samples spent calling
+              <a href='indexing.jl-e4ccd64e295c249c5bb83223a79dcd8ed3821767.html#L71'>weightedindex</a>
+              <br />
+              17 &#40;3 &#37;&#41;
+              samples spent calling
+              <a href='indexing.jl-e4ccd64e295c249c5bb83223a79dcd8ed3821767.html#L72'>weightedindex</a>
+              <br />
+            </div>
+            <span class='code'>    weightedindex&#40;fs, degree&#40;mode&#41;, knotvec, x, iclamp&#41;</span>
+          </td>
+        </tr>
+        <tr id='L63'>
+          <td class='lineno'>63</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+        <tr id='L64'>
+          <td class='lineno'>64</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L65'>
+          <td class='lineno'>65</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>function weightedindex&#40;fs::F, deg::Constant, knotvec, x, iclamp&#41; where F</span>
+          </td>
+        </tr>
+        <tr id='L66'>
+          <td class='lineno'>66</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    pos, δx &#61; positions&#40;deg, knotvec,  x&#41;</span>
+          </td>
+        </tr>
+        <tr id='L67'>
+          <td class='lineno'>67</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    &#40;position&#61;pos, coefs&#61;fmap&#40;fs, deg, δx&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L68'>
+          <td class='lineno'>68</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+        <tr id='L69'>
+          <td class='lineno'>69</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>function weightedindex&#40;fs::F, deg::Degree, knotvec, x, iclamp&#41; where F</span>
+          </td>
+        </tr>
+        <tr id='L70'>
+          <td class='lineno'>70</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'>320 &#40;0 &#37;&#41;</td>
+          <td>
+            <div class='call-sites'>
+              320 &#40;0 &#37;&#41;
+              samples spent in weightedindex
+              <br />
+              
+              320 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from weightedindex_parts2
+              <a href='indexing.jl-e4ccd64e295c249c5bb83223a79dcd8ed3821767.html#L62'>line 62</a>
+              <br />
+            </div>
+            <div class='callees'>
+              5 &#40;2 &#37;&#41;
+              samples spent calling
+              <a href='subarray.jl-f77f925f6815a87b9c4ac0975b3c6a353c852558.html#L319'>getindex</a>
+              <br />
+              310 &#40;97 &#37;&#41;
+              samples spent calling
+              <a href='range.jl-8b3f4637b0d9f2db74def27f4128bd881fa4ceef.html#L941'>getindex</a>
+              <br />
+              5 &#40;2 &#37;&#41;
+              samples spent calling
+              <a href='essentials.jl-febcc3366e269419fd91b811c429eeecfd9a9d7b.html#L13'>getindex</a>
+              <br />
+            </div>
+            <span class='code'>    @inbounds l, u &#61; knotvec&#91;iclamp&#93;, knotvec&#91;iclamp&#43;1&#93;</span>
+          </td>
+        </tr>
+        <tr id='L71'>
+          <td class='lineno'>71</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'>161 &#40;0 &#37;&#41;</td>
+          <td>
+            <div class='call-sites'>
+              161 &#40;0 &#37;&#41;
+              samples spent in weightedindex
+              <br />
+              
+              161 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from weightedindex_parts2
+              <a href='indexing.jl-e4ccd64e295c249c5bb83223a79dcd8ed3821767.html#L62'>line 62</a>
+              <br />
+            </div>
+            <div class='callees'>
+              128 &#40;80 &#37;&#41;
+              samples spent calling
+              <a href='utils.jl-63d99513b58402a56d50a7351e807c7326bc38cf.html#L5'>ratio</a>
+              <br />
+              33 &#40;20 &#37;&#41;
+              samples spent calling
+              <a href='float.jl-99cec99616a281291716faed5e77b765297d05f9.html#L409'>-</a>
+              <br />
+            </div>
+            <span class='code'>    δx &#61; ratio&#40;x - l, u - l&#41;</span>
+          </td>
+        </tr>
+        <tr id='L72'>
+          <td class='lineno'>72</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'>17 &#40;0 &#37;&#41;</td>
+          <td>
+            <div class='call-sites'>
+              17 &#40;0 &#37;&#41;
+              samples spent in weightedindex
+              <br />
+              
+              17 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from weightedindex_parts2
+              <a href='indexing.jl-e4ccd64e295c249c5bb83223a79dcd8ed3821767.html#L62'>line 62</a>
+              <br />
+            </div>
+            <div class='callees'>
+              17 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='utils.jl-63d99513b58402a56d50a7351e807c7326bc38cf.html#L10'>fmap</a>
+              <br />
+            </div>
+            <span class='code'>    &#40;position&#61;iclamp, coefs&#61;rescale_gridded&#40;fs, fmap&#40;fs, deg, δx&#41;, u-l&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L73'>
+          <td class='lineno'>73</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+        <tr id='L74'>
+          <td class='lineno'>74</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L75'>
+          <td class='lineno'>75</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>rescale_gridded&#40;fs::F, coefs, Δx&#41; where F &#61;</span>
+          </td>
+        </tr>
+        <tr id='L76'>
+          <td class='lineno'>76</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    &#40;rescale_gridded&#40;fs&#91;1&#93;, coefs&#91;1&#93;, Δx&#41;, rescale_gridded&#40;Base.tail&#40;fs&#41;, Base.tail&#40;coefs&#41;, Δx&#41;...&#41;</span>
+          </td>
+        </tr>
+        <tr id='L77'>
+          <td class='lineno'>77</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>rescale_gridded&#40;::Tuple&#123;&#125;, ::Tuple&#123;&#125;, Δx&#41; &#61; &#40;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L78'>
+          <td class='lineno'>78</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>rescale_gridded&#40;::typeof&#40;value_weights&#41;, coefs, Δx&#41; &#61; coefs</span>
+          </td>
+        </tr>
+        <tr id='L79'>
+          <td class='lineno'>79</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>rescale_gridded&#40;::typeof&#40;gradient_weights&#41;, coefs, Δx&#41; &#61; coefs./Δx</span>
+          </td>
+        </tr>
+        <tr id='L80'>
+          <td class='lineno'>80</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>rescale_gridded&#40;::typeof&#40;hessian_weights&#41;, coefs, Δx&#41; &#61; coefs./Δx.^2</span>
+          </td>
+        </tr>
+        <tr id='L81'>
+          <td class='lineno'>81</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L82'>
+          <td class='lineno'>82</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>@inline function &#40;itp::GriddedInterpolation&#123;T,N&#125;&#41;&#40;x::Vararg&#123;Union&#123;Number,AbstractVector&#125;,N&#125;&#41; where &#123;T,N&#125;</span>
+          </td>
+        </tr>
+        <tr id='L83'>
+          <td class='lineno'>83</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    @boundscheck &#40;checkbounds&#40;Bool, itp, x...&#41; || Base.throw_boundserror&#40;itp, x&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L84'>
+          <td class='lineno'>84</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    itps &#61; tcollect&#40;itpflag, itp&#41;</span>
+          </td>
+        </tr>
+        <tr id='L85'>
+          <td class='lineno'>85</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    if x&#91;1&#93; isa AbstractVector</span>
+          </td>
+        </tr>
+        <tr id='L86'>
+          <td class='lineno'>86</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        wis &#61; dimension_wis_vec&#40;value_weights, itps, itp.knots, x&#41;</span>
+          </td>
+        </tr>
+        <tr id='L87'>
+          <td class='lineno'>87</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    else</span>
+          </td>
+        </tr>
+        <tr id='L88'>
+          <td class='lineno'>88</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        wis &#61; dimension_wis&#40;value_weights, itps, itp.knots, x&#41;</span>
+          </td>
+        </tr>
+        <tr id='L89'>
+          <td class='lineno'>89</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    end</span>
+          </td>
+        </tr>
+        <tr id='L90'>
+          <td class='lineno'>90</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    coefs &#61; coefficients&#40;itp&#41;</span>
+          </td>
+        </tr>
+        <tr id='L91'>
+          <td class='lineno'>91</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    ret &#61; &#91;coefs&#91;i...&#93; for i in Iterators.product&#40;wis...&#41;&#93;</span>
+          </td>
+        </tr>
+        <tr id='L92'>
+          <td class='lineno'>92</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    reshape&#40;ret, shape&#40;wis...&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L93'>
+          <td class='lineno'>93</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+        <tr id='L94'>
+          <td class='lineno'>94</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L95'>
+          <td class='lineno'>95</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>function dimension_wis&#40;f::F, itps, knots, xs&#41; where F</span>
+          </td>
+        </tr>
+        <tr id='L96'>
+          <td class='lineno'>96</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    itpflag, knotvec, x &#61; itps&#91;1&#93;, knots&#91;1&#93;, xs&#91;1&#93;</span>
+          </td>
+        </tr>
+        <tr id='L97'>
+          <td class='lineno'>97</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    function makewi&#40;y&#41;</span>
+          </td>
+        </tr>
+        <tr id='L98'>
+          <td class='lineno'>98</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        pos, coefs &#61; weightedindex_parts&#40;&#40;f,&#41;, itpflag, knotvec, y&#41;</span>
+          </td>
+        </tr>
+        <tr id='L99'>
+          <td class='lineno'>99</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        maybe_weightedindex&#40;pos, coefs&#91;1&#93;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L100'>
+          <td class='lineno'>100</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    end</span>
+          </td>
+        </tr>
+        <tr id='L101'>
+          <td class='lineno'>101</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    &#40;makewi.&#40;x&#41;, dimension_wis&#40;f, Base.tail&#40;itps&#41;, Base.tail&#40;knots&#41;, Base.tail&#40;xs&#41;&#41;...&#41;</span>
+          </td>
+        </tr>
+        <tr id='L102'>
+          <td class='lineno'>102</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+        <tr id='L103'>
+          <td class='lineno'>103</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L104'>
+          <td class='lineno'>104</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>function dimension_wis_vec&#40;f::F, itps, knots, xs&#41; where F</span>
+          </td>
+        </tr>
+        <tr id='L105'>
+          <td class='lineno'>105</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    itpflag, knotvec, x &#61; itps&#91;1&#93;, knots&#91;1&#93;, xs&#91;1&#93;</span>
+          </td>
+        </tr>
+        <tr id='L106'>
+          <td class='lineno'>106</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    ivec &#61; find_knot_index&#40;knotvec, x&#41;</span>
+          </td>
+        </tr>
+        <tr id='L107'>
+          <td class='lineno'>107</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    function makewi&#40;y, i&#41;</span>
+          </td>
+        </tr>
+        <tr id='L108'>
+          <td class='lineno'>108</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        pos, coefs &#61; weightedindex_parts2&#40;&#40;f,&#41;, itpflag, knotvec, y, i&#41;</span>
+          </td>
+        </tr>
+        <tr id='L109'>
+          <td class='lineno'>109</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        maybe_weightedindex&#40;pos, coefs&#91;1&#93;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L110'>
+          <td class='lineno'>110</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    end</span>
+          </td>
+        </tr>
+        <tr id='L111'>
+          <td class='lineno'>111</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    &#40;makewi.&#40;x, ivec&#41;, dimension_wis&#40;f, Base.tail&#40;itps&#41;, Base.tail&#40;knots&#41;, Base.tail&#40;xs&#41;&#41;...&#41;</span>
+          </td>
+        </tr>
+        <tr id='L112'>
+          <td class='lineno'>112</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+        <tr id='L113'>
+          <td class='lineno'>113</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L114'>
+          <td class='lineno'>114</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>function dimension_wis&#40;f::F, itps::Tuple&#123;NoInterp,Vararg&#123;Any&#125;&#125;, knots, xs&#41; where F</span>
+          </td>
+        </tr>
+        <tr id='L115'>
+          <td class='lineno'>115</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    &#40;Int.&#40;xs&#91;1&#93;&#41;, dimension_wis&#40;f, Base.tail&#40;itps&#41;, Base.tail&#40;knots&#41;, Base.tail&#40;xs&#41;&#41;...&#41;</span>
+          </td>
+        </tr>
+        <tr id='L116'>
+          <td class='lineno'>116</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+        <tr id='L117'>
+          <td class='lineno'>117</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>dimension_wis&#40;f, ::Tuple&#123;&#125;, ::Tuple&#123;&#125;, ::Tuple&#123;&#125;&#41; &#61; &#40;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L118'>
+          <td class='lineno'>118</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L119'>
+          <td class='lineno'>119</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L120'>
+          <td class='lineno'>120</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>function getindex_return_type&#40;::Type&#123;GriddedInterpolation&#123;T,N,TCoefs,IT,K&#125;&#125;, argtypes&#41; where &#123;T,N,TCoefs,IT&lt;:DimSpec&#123;Gridded&#125;,K&#125;</span>
+          </td>
+        </tr>
+        <tr id='L121'>
+          <td class='lineno'>121</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    Tret &#61; TCoefs</span>
+          </td>
+        </tr>
+        <tr id='L122'>
+          <td class='lineno'>122</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    for a in argtypes</span>
+          </td>
+        </tr>
+        <tr id='L123'>
+          <td class='lineno'>123</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        Tret &#61; Base.promote_op&#40;*, Tret, a&#41;</span>
+          </td>
+        </tr>
+        <tr id='L124'>
+          <td class='lineno'>124</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    end</span>
+          </td>
+        </tr>
+        <tr id='L125'>
+          <td class='lineno'>125</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    Tret</span>
+          </td>
+        </tr>
+        <tr id='L126'>
+          <td class='lineno'>126</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+        <tr id='L127'>
+          <td class='lineno'>127</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L128'>
+          <td class='lineno'>128</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>Base.@propagate_inbounds function searchsortedfirst_exp_left&#40;v, xx, lo, hi&#41;</span>
+          </td>
+        </tr>
+        <tr id='L129'>
+          <td class='lineno'>129</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    for i in 0:4</span>
+          </td>
+        </tr>
+        <tr id='L130'>
+          <td class='lineno'>130</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        ind &#61; lo &#43; i</span>
+          </td>
+        </tr>
+        <tr id='L131'>
+          <td class='lineno'>131</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        ind &gt; hi &amp;&amp; return ind</span>
+          </td>
+        </tr>
+        <tr id='L132'>
+          <td class='lineno'>132</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        xx &lt;&#61; v&#91;ind&#93; &amp;&amp; return ind</span>
+          </td>
+        </tr>
+        <tr id='L133'>
+          <td class='lineno'>133</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    end</span>
+          </td>
+        </tr>
+        <tr id='L134'>
+          <td class='lineno'>134</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    n &#61; 3</span>
+          </td>
+        </tr>
+        <tr id='L135'>
+          <td class='lineno'>135</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    tn2 &#61; 2^n</span>
+          </td>
+        </tr>
+        <tr id='L136'>
+          <td class='lineno'>136</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    tn2m1 &#61; 2^&#40;n-1&#41;</span>
+          </td>
+        </tr>
+        <tr id='L137'>
+          <td class='lineno'>137</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    ind &#61; lo &#43; tn2</span>
+          </td>
+        </tr>
+        <tr id='L138'>
+          <td class='lineno'>138</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    while ind &lt;&#61; hi</span>
+          </td>
+        </tr>
+        <tr id='L139'>
+          <td class='lineno'>139</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        xx &lt;&#61; v&#91;ind&#93; &amp;&amp; return searchsortedfirst&#40;v, xx, lo &#43; tn2 - tn2m1, ind, Base.Order.Forward&#41;</span>
+          </td>
+        </tr>
+        <tr id='L140'>
+          <td class='lineno'>140</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        tn2 *&#61; 2</span>
+          </td>
+        </tr>
+        <tr id='L141'>
+          <td class='lineno'>141</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        tn2m1 *&#61; 2</span>
+          </td>
+        </tr>
+        <tr id='L142'>
+          <td class='lineno'>142</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        ind &#61; lo &#43; tn2</span>
+          </td>
+        </tr>
+        <tr id='L143'>
+          <td class='lineno'>143</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    end</span>
+          </td>
+        </tr>
+        <tr id='L144'>
+          <td class='lineno'>144</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    return searchsortedfirst&#40;v, xx, lo &#43; tn2 - tn2m1, hi, Base.Order.Forward&#41;</span>
+          </td>
+        </tr>
+        <tr id='L145'>
+          <td class='lineno'>145</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+        <tr id='L146'>
+          <td class='lineno'>146</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L147'>
+          <td class='lineno'>147</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>function searchsortedfirst_vec&#40;v::AbstractVector, x::AbstractVector&#41;</span>
+          </td>
+        </tr>
+        <tr id='L148'>
+          <td class='lineno'>148</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    issorted&#40;x&#41; || return searchsortedfirst.&#40;Ref&#40;v&#41;, x&#41;</span>
+          </td>
+        </tr>
+        <tr id='L149'>
+          <td class='lineno'>149</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    out &#61; zeros&#40;Int, length&#40;x&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L150'>
+          <td class='lineno'>150</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    lo &#61; 1</span>
+          </td>
+        </tr>
+        <tr id='L151'>
+          <td class='lineno'>151</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    hi &#61; length&#40;v&#41;</span>
+          </td>
+        </tr>
+        <tr id='L152'>
+          <td class='lineno'>152</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    @inbounds for i in 1:length&#40;x&#41;</span>
+          </td>
+        </tr>
+        <tr id='L153'>
+          <td class='lineno'>153</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        xx &#61; x&#91;i&#93;</span>
+          </td>
+        </tr>
+        <tr id='L154'>
+          <td class='lineno'>154</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        y &#61; searchsortedfirst_exp_left&#40;v, xx, lo, hi&#41;</span>
+          </td>
+        </tr>
+        <tr id='L155'>
+          <td class='lineno'>155</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        out&#91;i&#93; &#61; y</span>
+          </td>
+        </tr>
+        <tr id='L156'>
+          <td class='lineno'>156</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        lo &#61; min&#40;y, hi&#41;</span>
+          </td>
+        </tr>
+        <tr id='L157'>
+          <td class='lineno'>157</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    end</span>
+          </td>
+        </tr>
+        <tr id='L158'>
+          <td class='lineno'>158</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    return out</span>
+          </td>
+        </tr>
+        <tr id='L159'>
+          <td class='lineno'>159</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
+
