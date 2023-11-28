@@ -2,8 +2,8 @@ using DelimitedFiles, StatsBase, Interpolations
 
 function read_models(model1, model2)
     # Getting the model-dependent neutrino distribution
-    model_1 = readdlm("gc_data/$model1.txt", comments=true)
-    model_2 = readdlm("gc_data/$model2.txt", comments=true)
+    model_1 = readdlm("/Users/millermacdonald/Desktop/Research_shit/GP_nu_sim_data/$model1.txt", comments=true)
+    model_2 = readdlm("/Users/millermacdonald/Desktop/Research_shit/GP_nu_sim_data/$model2.txt", comments=true)
 
 
     νmodel = vcat(model_1, model_2)
