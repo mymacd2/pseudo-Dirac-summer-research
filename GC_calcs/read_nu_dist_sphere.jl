@@ -1,13 +1,17 @@
 using DelimitedFiles, StatsBase, Interpolations
 
-function read_models(model1, model2)
+function read_models(model1; model2=0, get_es=true)
     # Getting the model-dependent neutrino distribution
     model_1 = readdlm("/Users/millermacdonald/Desktop/Research_shit/GP_nu_sim_data/$model1.txt", comments=true)
-    model_2 = readdlm("/Users/millermacdonald/Desktop/Research_shit/GP_nu_sim_data/$model2.txt", comments=true)
 
-
-    νmodel = vcat(model_1, model_2)
-    numv = size(νmodel)[1]
+    if model2 !== 0
+        model_2 = readdlm("/Users/millermacdonald/Desktop/Research_shit/GP_nu_sim_data/$model2.txt", comments=true)
+        νmodel = vcat(model_1, model_2)
+        numv = size(νmodel)[1]
+    else
+        νmodel = model_1
+        numv = size(νmodel)[1]
+    end
 
 
     xs = νmodel[:, 4]
@@ -44,8 +48,13 @@ function read_models(model1, model2)
         bs[i] = tuples[i][3]
     end
 
-    return (rs, ls, bs, rweights)
-
+    if get_es==true
+        logνes = log10.(νmodel[:, 3] ./ 1e12)
+        logCRes = log10.(νmodel[:, 7] ./ 1e12)
+        return (rs, ls, bs, rweights, logνes, logCRes)
+    else
+        return (rs, ls, bs, rweights)
+    end
 end
 
 # nuweights[1:5, :, :] .= 0

@@ -1,3 +1,39 @@
+using StaticArrays
+
+function oscprob(et, dm2, leff)
+
+    # Norms squared of the PMNS matrix (exact vals might change but always needs to be unitary)
+    u = @SMatrix [0.674743 0.302844 0.0224125;
+                  0.0946105 0.360415 0.544974;
+                  0.230646 0.33674 0.432613]
+
+    # Conversion factor to go from kpc to 1/eV
+    convfactor = 3.086e19 * 5.06773093741 * 1e6
+
+    leff *= convfactor
+
+    # Assuming uniform mass splitting over all three mass states
+    osc = (cos((dm2 * leff)/(4*et*1e12)))^2
+
+    prob_ee = osc*((u[1]*u[1]) + (u[4]*u[4]) + (u[7]*u[7]))
+    prob_μe = osc*((u[1]*u[2]) + (u[4]*u[5]) + (u[7]*u[8]))
+
+    prob_eτ = osc*((u[3]*u[1]) + (u[6]*u[4]) + (u[9]*u[7]))
+    prob_μτ = osc*((u[3]*u[2]) + (u[6]*u[5]) + (u[9]*u[8]))
+
+    prob_eμ = osc*((u[2]*u[1]) + (u[5]*u[4]) + (u[8]*u[7]))
+    prob_μμ = osc*((u[2]*u[2]) + (u[5]*u[5]) + (u[8]*u[8]))
+
+    prob_e = 0.333333prob_ee + 0.666666prob_μe
+    prob_τ = 0.333333prob_eτ + 0.666666prob_μτ
+    prob_μ = 0.333333prob_eμ + 0.666666prob_μμ
+
+    # νμ contribution comes from the 25% chance of a neutral current interaction, which appears as a cascade
+    return prob_e + prob_τ + 0.25prob_μ
+
+end
+
+
 function poissonlog(data, hyp)
     # Avoiding weird /0 scenarios
     if hyp < 1e-20
