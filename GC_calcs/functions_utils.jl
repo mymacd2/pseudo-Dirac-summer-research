@@ -69,3 +69,28 @@ function cartz(r, l, b)
     z = r*sin(b)
     return z
 end
+
+#=
+function energy_cut(rs, ls, bs, rws, us, oneweights; umin=log10(umin), umax=log10(umax))
+    concatmat = hcat(rs, ls, bs, rws, us, oneweights)
+    filtered_matrix_rows = [row for row in eachrow(concatmat) if umin <= row[5] <= umax]
+    filtered_mat = hcat(filtered_matrix_rows...)
+    fmat = transpose(filtered_mat)
+end
+=#
+
+function energy_cut(x...; umin=log10(umin), umax=log10(umax))
+    concatmat = hcat(x...)
+    filtered_matrix_rows = [row for row in eachrow(concatmat) if umin <= row[5] <= umax]
+    filtered_mat = hcat(filtered_matrix_rows...)
+    return transpose(filtered_mat)
+end
+
+function r_cut(x...; rmin=0.3)
+    concatmat = hcat(x...)
+    filtered_matrix_rows = [row for row in eachrow(concatmat) if rmin <= row[1]]
+    filtered_mat = hcat(filtered_matrix_rows...)
+    return transpose(filtered_mat)
+end
+
+power_law_flux(E, γ; ϕ₀=1, E0=1) = ϕ₀ * (E / E0)^(-γ)
